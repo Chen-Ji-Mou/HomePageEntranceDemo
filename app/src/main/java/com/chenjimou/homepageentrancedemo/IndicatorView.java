@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class indicatorView extends View {
+public class IndicatorView extends View {
     // 指示器背景的画笔
     private Paint mIndicatorBackgroundPaint;
     // 指示器的画笔
@@ -35,15 +35,15 @@ public class indicatorView extends View {
     // 指示器背景的颜色（默认黑色）
     private int indicatorColor = Color.BLACK;
 
-    public indicatorView(Context context) {
+    public IndicatorView(Context context) {
         this(context, null);
     }
 
-    public indicatorView(Context context, @Nullable AttributeSet attrs) {
+    public IndicatorView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public indicatorView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public IndicatorView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         // 初始化
         init(context, attrs);
@@ -52,10 +52,10 @@ public class indicatorView extends View {
     private void init(Context context, @Nullable AttributeSet attrs) {
 
         // 通过TypedArray获取布局文件中设置的属性值
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.indicatorView);
-        indicatorBackgroundColor = typedArray.getColor(R.styleable.indicatorView_indicator_background_color,
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorView);
+        indicatorBackgroundColor = typedArray.getColor(R.styleable.IndicatorView_indicator_background_color,
                 indicatorBackgroundColor);
-        indicatorColor = typedArray.getColor(R.styleable.indicatorView_indicator_color, indicatorColor);
+        indicatorColor = typedArray.getColor(R.styleable.IndicatorView_indicator_color, indicatorColor);
         typedArray.recycle();
 
         mIndicatorBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

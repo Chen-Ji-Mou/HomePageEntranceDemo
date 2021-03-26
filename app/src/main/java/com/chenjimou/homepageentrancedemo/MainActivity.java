@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         RecyclerView recyclerView = findViewById(R.id.myRecyclerView);
-        indicatorView indicatorView = findViewById(R.id.indicatorView);
+        IndicatorView indicatorView = findViewById(R.id.indicatorView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(new RecyclerViewAdapter());
