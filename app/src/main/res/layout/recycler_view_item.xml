@@ -9,6 +9,7 @@
         android:id="@+id/item_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:drawableTop="@mipmap/ic_launcher"/>
 
 </LinearLayout>
