@@ -6,16 +6,9 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myRecyclerView"
+    <com.chenjimou.homepageentrancedemo.MyLayout
+        android:id="@+id/myLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <com.chenjimou.homepageentrancedemo.IndicatorView
-        android:id="@+id/indicatorView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/myRecyclerView"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

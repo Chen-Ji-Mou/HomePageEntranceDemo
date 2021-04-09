@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,8 +50,6 @@ public class MyLayout extends FrameLayout {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new RecyclerViewAdapter();
-        recyclerView.setAdapter(adapter);
 
         // 默认不显示
         indicator.setVisibility(View.GONE);
@@ -60,6 +60,7 @@ public class MyLayout extends FrameLayout {
             list.clear();
             list.addAll(data);
         }
+
         // 计算出每个 item 依据个数决定的新宽度
         int containerWidth = DisplayUtils.getDisplaySize(mContext).widthPixels;
         if (list.size() > 5){
@@ -68,7 +69,13 @@ public class MyLayout extends FrameLayout {
             itemWidth = containerWidth / list.size();
         }
 
-        adapter.notifyDataSetChanged();
+        if (adapter == null){
+            adapter = new RecyclerViewAdapter();
+            recyclerView.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+
         indicator.bindRecyclerView(recyclerView);
 
         if (list.size() > 5){
@@ -110,13 +117,14 @@ public class MyLayout extends FrameLayout {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-
+            private final ImageView iv;
             private final TextView tv;
-
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
+                iv = itemView.findViewById(R.id.item_iv);
                 tv = itemView.findViewById(R.id.item_tv);
-                tv.setOnClickListener(new View.OnClickListener() {
+                ConstraintLayout item = itemView.findViewById(R.id.item);
+                item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (null != onClickListener){
